@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BricksService"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="BmTestResults1"
+    ViewObjectName="com.sunnen.bricks.model.vo.BmTestResults"/>
+  <ViewUsage
+    Name="BmTests1"
+    ViewObjectName="com.sunnen.bricks.model.vo.BmTests"/>
+  <ViewUsage
+    Name="BmTestResults2"
+    ViewObjectName="com.sunnen.bricks.model.vo.BmTestResults"/>
+  <ViewLinkUsage
+    Name="TstResFkLink1"
+    ViewLinkObjectName="com.sunnen.bricks.model.vo.TstResFkLink"
+    SrcViewUsageName="com.sunnen.bricks.model.am.BricksService.BmTests1"
+    DstViewUsageName="com.sunnen.bricks.model.am.BricksService.BmTestResults2"
+    Reversed="false"/>
+</AppModule>

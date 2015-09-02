@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TstResFkAssoc"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="BmTest"
+    Cardinality="1"
+    Source="true"
+    Owner="com.sunnen.bricks.model.eo.BmTest">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="BmTest"/>
+      <Attr Name="_foreignKey" Value="com.sunnen.bricks.model.eo.BmTest.TestPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sunnen.bricks.model.eo.BmTest.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="BmTestResult"
+    Cardinality="-1"
+    Owner="com.sunnen.bricks.model.eo.BmTestResult">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="BmTestResult"/>
+      <Attr Name="_foreignKey" Value="com.sunnen.bricks.model.eo.BmTestResult.TstResFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sunnen.bricks.model.eo.BmTestResult.TestId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

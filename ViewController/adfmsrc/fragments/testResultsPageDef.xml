@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="testResultsPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BmTests1" RangeSize="25" DataControl="BricksServiceDataControl" id="BmTests1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="BmTests1Iterator" id="OrderNr">
+      <AttrNames>
+        <Item Value="OrderNr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BmTests1Iterator" id="Partnumber">
+      <AttrNames>
+        <Item Value="Partnumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

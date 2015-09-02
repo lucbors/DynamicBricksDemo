@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:panelGroupLayout id="pgl2" layout="scroll">
+        <af:panelLabelAndMessage label="#{bindings.OrderNr.hints.label}" id="plam1">
+            <af:outputText value="#{bindings.OrderNr.inputValue}" shortDesc="#{bindings.OrderNr.hints.tooltip}"
+                           id="ot1">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.OrderNr.format}"/>
+            </af:outputText>
+        </af:panelLabelAndMessage>
+        <af:panelLabelAndMessage label="#{bindings.Partnumber.hints.label}" id="plam2">
+            <af:outputText value="#{bindings.Partnumber.inputValue}" shortDesc="#{bindings.Partnumber.hints.tooltip}"
+                           id="ot2"/>
+        </af:panelLabelAndMessage>
+        <af:panelGridLayout id="pgl1" partialTriggers="b2">
+            <af:gridRow marginTop="5px" height="auto" id="gr1">
+                <af:gridCell marginStart="5px" columnSpan="2" id="gc1" halign="start">
+                    <af:outputText value="Avarage:" id="ot3"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" columnSpan="2" marginEnd="5px" id="gc2" halign="start">
+                    <af:outputText value="Std. Dev:" id="ot4"/>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" id="gr2">
+                <af:gridCell marginStart="5px" width="5%" id="gc3" halign="start">
+                    <af:outputText value="Left:" id="ot5"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" id="gc4" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.leftAvg}" id="ot7"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="5%" id="gc5" halign="start">
+                    <af:outputText value="Left:" id="ot6"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc6" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.leftStDev}" id="ot8"/>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" id="gr3">
+                <af:gridCell marginStart="5px" width="5%" id="gc7" halign="start">
+                    <af:outputText value="Right:" id="ot9"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" id="gc8" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.rightAvg}" id="ot10"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="5%" id="gc9" halign="start">
+                    <af:outputText value="Right:" id="ot11"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc10" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.rightStDev}" id="ot12"/>
+                </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                <af:gridCell marginStart="5px" width="25%" id="gc11" halign="start">
+                    <af:outputText value="Overall:" id="ot13"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" id="gc12" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.overallAvg}" id="ot14"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" id="gc13" halign="start">
+                    <af:outputText value="Overall:" id="ot16"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc14" halign="start">
+                    <af:outputText value="#{pageFlowScope.bricksBean.overallStDev}" id="ot15"/>
+                </af:gridCell>
+            </af:gridRow>
+        </af:panelGridLayout>
+        <af:separator id="s1"/>
+        <af:panelGridLayout id="pgl3">
+            <af:gridRow marginTop="5px" height="auto" id="gr5">
+                <af:gridCell marginStart="5px" columnSpan="3" id="gc15" halign="center">
+                    <af:outputText value="Left / Right" id="ot18" visible="#{pageFlowScope.bricksBean.showCol1}"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" columnSpan="3" id="gc16" halign="center">
+                    <af:outputText value="Left / Right" id="ot19" visible="#{pageFlowScope.bricksBean.showCol2}"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" columnSpan="3" id="gc17" halign="center">
+                    <af:outputText value="Left / Right" id="ot20" visible="#{pageFlowScope.bricksBean.showCol3}"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc18" halign="center">
+                    <af:outputText value="Left / Right" id="ot21" visible="#{pageFlowScope.bricksBean.showCol4}"/>
+                </af:gridCell>
+            </af:gridRow>
+            <!-- now use af:forEach to add gridrows -->
+            <!-- note, af:iterator is prefered but does not have begin/end/step attributes. Thus here we need to use af:forEach -->
+            <!-- carefull, zero based index on the foreach so need to substract 1 of number of rows to determine end-->
+            <af:forEach var="row" begin="0" end="#{pageFlowScope.bricksBean.nrOfRowsToShow}" step="1" varStatus="vs">
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr9" >
+                    <af:forEach items="#{pageFlowScope.bricksBean.listWithData}" var="dataset" begin="#{(vs.index*4)}"
+                                end="#{(vs.index*4)+3}" step="1" varStatus="st">
+                        <af:gridCell marginStart="60px" width="17%" id="gc25" halign="end">
+                            <af:inputText readOnly="true" value="#{st.index+1})" id="ot17"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="17%" id="gc25a" halign="end">
+                            <af:inputText value="#{dataset.leftData}" id="it1" columns="6"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="0px" width="17%" id="gc25b" halign="start">
+                            <af:inputText value="#{dataset.rightData}" id="it2" columns="6"/>
+                        </af:gridCell>
+                    </af:forEach>
+                </af:gridRow>
+            </af:forEach>
+        </af:panelGridLayout>
+
+        <!-- without panelgridlayout 
+         <af:iterator id="i1a" value="#{pageFlowScope.bricksBean.listWithData}" var="dataset" varStatus="st">
+                        <af:panelLabelAndMessage label="#{st.index+1})" id="ot17a">
+                            <af:panelGroupLayout layout="horizontal">
+                                <af:inputText value="#{dataset.leftData}" id="it1a" columns="3"/>
+                                <af:inputText value="#{dataset.rightData}" id="it2a" columns="3"/>
+                            </af:panelGroupLayout>
+                        </af:panelLabelAndMessage>
+                    </af:iterator>
+        -->
+        <af:button text="recalc" partialSubmit="true" id="b2" actionListener="#{pageFlowScope.bricksBean.recalcAll}"/>
+        <af:button text="back (will reset all testdata)" action="back" id="b1"
+                   actionListener="#{pageFlowScope.bricksBean.resetArrayWithTestData}"/>
+    </af:panelGroupLayout>
+</ui:composition>

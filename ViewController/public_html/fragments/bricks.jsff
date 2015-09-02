@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                  required="#{bindings.Id.hints.mandatory}" readOnly="true" columns="#{bindings.Id.hints.displayWidth}"
+                  maximumLength="#{bindings.Id.hints.precision}" shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.Id.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Partnumber.inputValue}" label="#{bindings.Partnumber.hints.label}"
+                  required="#{bindings.Partnumber.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.Partnumber.hints.displayWidth}"
+                  maximumLength="#{bindings.Partnumber.hints.precision}"
+                  shortDesc="#{bindings.Partnumber.hints.tooltip}" id="it2">
+      <f:validator binding="#{bindings.Partnumber.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Quantity.inputValue}" label="#{bindings.Quantity.hints.label}"
+                  required="#{bindings.Quantity.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.Quantity.hints.displayWidth}" maximumLength="#{bindings.Quantity.hints.precision}"
+                  shortDesc="#{bindings.Quantity.hints.tooltip}" id="it3">
+      <f:validator binding="#{bindings.Quantity.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Quantity.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.OrderNr.inputValue}" label="#{bindings.OrderNr.hints.label}"
+                  required="#{bindings.OrderNr.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.OrderNr.hints.displayWidth}" maximumLength="#{bindings.OrderNr.hints.precision}"
+                  shortDesc="#{bindings.OrderNr.hints.tooltip}" id="it4">
+      <f:validator binding="#{bindings.OrderNr.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.OrderNr.format}"/>
+    </af:inputText>
+    <af:inputDate value="#{bindings.Testdate.inputValue}" readOnly="true" label="#{bindings.Testdate.hints.label}"
+                  required="#{bindings.Testdate.hints.mandatory}" columns="#{bindings.Testdate.hints.displayWidth}"
+                  shortDesc="#{bindings.Testdate.hints.tooltip}" id="id1">
+      <f:validator binding="#{bindings.Testdate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.Testdate.format}"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.MachineNr.inputValue}" label="#{bindings.MachineNr.hints.label}"
+                  required="#{bindings.MachineNr.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.MachineNr.hints.displayWidth}"
+                  maximumLength="#{bindings.MachineNr.hints.precision}" shortDesc="#{bindings.MachineNr.hints.tooltip}"
+                  id="it5">
+      <f:validator binding="#{bindings.MachineNr.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.MachineNr.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.EmpNr.inputValue}" label="#{bindings.EmpNr.hints.label}"
+                  required="#{bindings.EmpNr.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.EmpNr.hints.displayWidth}" maximumLength="#{bindings.EmpNr.hints.precision}"
+                  shortDesc="#{bindings.EmpNr.hints.tooltip}" id="it6">
+      <f:validator binding="#{bindings.EmpNr.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.EmpNr.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.WaterTemp.inputValue}" label="#{bindings.WaterTemp.hints.label}"
+                  required="#{bindings.WaterTemp.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.WaterTemp.hints.displayWidth}"
+                  maximumLength="#{bindings.WaterTemp.hints.precision}" shortDesc="#{bindings.WaterTemp.hints.tooltip}"
+                  id="it7">
+      <f:validator binding="#{bindings.WaterTemp.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.WaterTemp.format}"/>
+    </af:inputText>
+    <af:separator id="s1"/>
+    <af:inputText label="Number of bricks to be tested" id="it8"
+                  value="#{pageFlowScope.bricksBean.nrOfBricksToBeTested}"/>
+    <f:facet name="footer">
+      <af:panelGroupLayout layout="horizontal" id="pgl1">
+   
+        <af:button actionListener="#{pageFlowScope.bricksBean.prepareArrayForDataEntry}" text="Enter Test Results" 
+                   partialSubmit="true" action="goEnterData" id="b1"/>
+        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+        <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                   partialSubmit="true" id="b3"/>
+        <af:button actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}"
+                   partialSubmit="true" id="b4"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelFormLayout>
+</ui:composition>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TstResFkLink"
+  Version="12.1.3.13.26"
+  InheritPersonalization="merge"
+  EntityAssociation="com.sunnen.bricks.model.eo.TstResFkAssoc">
+  <ViewLinkDefEnd
+    Name="BmTests"
+    Cardinality="1"
+    Source="true"
+    Owner="com.sunnen.bricks.model.vo.BmTests">
+    <DesignTime>
+      <Attr Name="_finderName" Value="BmTests"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sunnen.bricks.model.vo.BmTests.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="BmTestResults"
+    Cardinality="-1"
+    Owner="com.sunnen.bricks.model.vo.BmTestResults">
+    <DesignTime>
+      <Attr Name="_finderName" Value="BmTestResults"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sunnen.bricks.model.vo.BmTestResults.TestId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
